@@ -12,6 +12,8 @@
 		CB7DFC0420E5829400743267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0220E5829400743267 /* Main.storyboard */; };
 		CB7DFC0620E5829700743267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0520E5829700743267 /* Assets.xcassets */; };
 		CB7DFC0920E5829700743267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0720E5829700743267 /* LaunchScreen.storyboard */; };
+		CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC1320E5917A00743267 /* LoginViewController.swift */; };
+		CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC1920E5922200743267 /* UserModel.swift */; };
 		E8E7562B990E49A4635A4C21 /* Pods_GitLabTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		CB7DFC0520E5829700743267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB7DFC0820E5829700743267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB7DFC0A20E5829700743267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB7DFC1320E5917A00743267 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CB7DFC1920E5922200743267 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitLabTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,7 @@
 		CB7DFC1020E5876F00743267 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB7DFC1520E5918700743267 /* Login */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 		CB7DFC1120E5877B00743267 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB7DFC1620E591FF00743267 /* User */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +107,23 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CB7DFC1520E5918700743267 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DFC1320E5917A00743267 /* LoginViewController.swift */,
+			);
+			name = Login;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CB7DFC1620E591FF00743267 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DFC1920E5922200743267 /* UserModel.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		EEA0BBA3EADD213ACF66A6D9 /* Pods */ = {
@@ -224,7 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */,
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
+				CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */,
 				CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
