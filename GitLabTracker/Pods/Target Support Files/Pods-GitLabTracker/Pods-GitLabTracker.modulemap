@@ -1,0 +1,6 @@
+framework module Pods_GitLabTracker {
+  umbrella header "Pods-GitLabTracker-umbrella.h"
+
+  export *
+  module * { export * }
+}

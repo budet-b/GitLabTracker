@@ -12,9 +12,12 @@
 		CB7DFC0420E5829400743267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0220E5829400743267 /* Main.storyboard */; };
 		CB7DFC0620E5829700743267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0520E5829700743267 /* Assets.xcassets */; };
 		CB7DFC0920E5829700743267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0720E5829700743267 /* LaunchScreen.storyboard */; };
+		E8E7562B990E49A4635A4C21 /* Pods_GitLabTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C5260431170CC5A74ED2893 /* Pods-GitLabTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitLabTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		AFAE469C26D54F5824F31498 /* Pods-GitLabTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitLabTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CB7DFBFB20E5829400743267 /* GitLabTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLabTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7DFBFE20E5829400743267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7DFC0020E5829400743267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		CB7DFC0520E5829700743267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB7DFC0820E5829700743267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB7DFC0A20E5829700743267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitLabTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E7562B990E49A4635A4C21 /* Pods_GitLabTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92E3494AAF11A9A08BD017F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CB7DFBF220E5829400743267 = {
 			isa = PBXGroup;
 			children = (
 				CB7DFBFD20E5829400743267 /* GitLabTracker */,
 				CB7DFBFC20E5829400743267 /* Products */,
+				EEA0BBA3EADD213ACF66A6D9 /* Pods */,
+				92E3494AAF11A9A08BD017F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +103,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EEA0BBA3EADD213ACF66A6D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C5260431170CC5A74ED2893 /* Pods-GitLabTracker.debug.xcconfig */,
+				AFAE469C26D54F5824F31498 /* Pods-GitLabTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,9 +119,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB7DFC0D20E5829700743267 /* Build configuration list for PBXNativeTarget "GitLabTracker" */;
 			buildPhases = (
+				99CD11FD2E01EF7F44DBE805 /* [CP] Check Pods Manifest.lock */,
 				CB7DFBF720E5829400743267 /* Sources */,
 				CB7DFBF820E5829400743267 /* Frameworks */,
 				CB7DFBF920E5829400743267 /* Resources */,
+				64CB110C66011429E46EDF4B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,6 +179,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64CB110C66011429E46EDF4B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99CD11FD2E01EF7F44DBE805 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GitLabTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB7DFBF720E5829400743267 /* Sources */ = {
@@ -302,6 +367,7 @@
 		};
 		CB7DFC0E20E5829700743267 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C5260431170CC5A74ED2893 /* Pods-GitLabTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -320,6 +386,7 @@
 		};
 		CB7DFC0F20E5829700743267 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFAE469C26D54F5824F31498 /* Pods-GitLabTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
