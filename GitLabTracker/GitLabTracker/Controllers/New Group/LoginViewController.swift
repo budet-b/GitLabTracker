@@ -48,7 +48,8 @@ class LoginViewController: UIViewController {
                     case 200:
                         let userDefaults = UserDefaults.standard
                         userDefaults.set(self.personnaltokenTextField.text, forKey: "token")
-                        
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardNC")
+                        self.present(vc!, animated: true, completion: nil)
                     default:
                         let alert = UIAlertController(title: "Impossible to login", message: "invalid token", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: nil))

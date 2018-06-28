@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,20 +66,75 @@
             </objects>
             <point key="canvasLocation" x="-106.40000000000001" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
+        <!--Dashboard-->
         <scene sceneID="DKk-p5-LFN">
             <objects>
-                <viewController id="IqA-X2-SdY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Dashboard" title="Dashboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IqA-X2-SdY" customClass="DashboardViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nkm-al-CHn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqo-8q-oyC">
+                                <rect key="frame" x="40" y="171" width="207" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="207" id="64F-rz-SlX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xBP-co-Qev">
+                                <rect key="frame" x="265" y="150" width="70" height="70"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJ2-Wz-ePr">
+                                <rect key="frame" x="22" y="228" width="331" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xBP-co-Qev" firstAttribute="leading" secondItem="gqo-8q-oyC" secondAttribute="trailing" constant="18" id="4cH-48-VA6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YJ2-Wz-ePr" secondAttribute="trailing" constant="6" id="C1N-3Q-aBp"/>
+                            <constraint firstItem="gqo-8q-oyC" firstAttribute="top" secondItem="4jW-pr-hJM" secondAttribute="top" constant="31" id="Gl5-bB-scc"/>
+                            <constraint firstItem="4jW-pr-hJM" firstAttribute="bottom" secondItem="YJ2-Wz-ePr" secondAttribute="bottom" constant="548" id="HRf-td-MAz"/>
+                            <constraint firstItem="YJ2-Wz-ePr" firstAttribute="leading" secondItem="nkm-al-CHn" secondAttribute="leadingMargin" constant="6" id="O9b-pR-ZMB"/>
+                            <constraint firstItem="YJ2-Wz-ePr" firstAttribute="top" secondItem="xBP-co-Qev" secondAttribute="bottom" constant="8" id="Vd3-Lf-oIi"/>
+                            <constraint firstItem="xBP-co-Qev" firstAttribute="top" secondItem="4jW-pr-hJM" secondAttribute="top" constant="10" id="a0u-kR-yTS"/>
+                            <constraint firstItem="gqo-8q-oyC" firstAttribute="leading" secondItem="4jW-pr-hJM" secondAttribute="leading" constant="40" id="fOx-V4-fwu"/>
+                            <constraint firstItem="YJ2-Wz-ePr" firstAttribute="top" secondItem="nkm-al-CHn" secondAttribute="top" constant="228" id="sQH-OX-8p9"/>
+                            <constraint firstItem="4jW-pr-hJM" firstAttribute="trailing" secondItem="xBP-co-Qev" secondAttribute="trailing" constant="40" id="zhP-vJ-6Ne"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4jW-pr-hJM"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Dashboard" largeTitleDisplayMode="always" id="c5G-Er-YSS"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="profilPictureImageView" destination="xBP-co-Qev" id="pkE-qc-8qp"/>
+                        <outlet property="usernameLabel" destination="gqo-8q-oyC" id="qXn-LT-wUP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOS-v9-LIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="132"/>
+            <point key="canvasLocation" x="1760.8" y="132.26600985221674"/>
+        </scene>
+        <!--NavigationDashboard-->
+        <scene sceneID="qYe-ze-Xmg">
+            <objects>
+                <navigationController storyboardIdentifier="DashboardNC" title="NavigationDashboard" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cCy-QY-iWo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="vnj-yG-kQN">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IqA-X2-SdY" kind="relationship" relationship="rootViewController" id="ArP-gK-gv5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gm-XH-haq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="131.52709359605913"/>
         </scene>
     </scenes>
 </document>
