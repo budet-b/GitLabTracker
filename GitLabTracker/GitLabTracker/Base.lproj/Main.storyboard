@@ -243,14 +243,14 @@
                         <outlet property="profilPictureImageView" destination="xBP-co-Qev" id="pkE-qc-8qp"/>
                         <outlet property="usernameLabel" destination="gqo-8q-oyC" id="qXn-LT-wUP"/>
                         <segue destination="bmi-SY-6qJ" kind="show" identifier="groupsSegue" id="QQz-Tp-TYh"/>
-                        <segue destination="ksF-iR-dSm" kind="show" identifier="projectSegue" id="yZ4-gc-FQK"/>
+                        <segue destination="WeZ-pl-oAn" kind="show" identifier="projectSegue" id="IuI-AA-rBR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOS-v9-LIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4554" y="-542"/>
         </scene>
-        <!--Project Detail View Controller-->
+        <!--Item-->
         <scene sceneID="2nb-m8-u2k">
             <objects>
                 <viewController id="ksF-iR-dSm" customClass="ProjectDetailViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -259,7 +259,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TM-9X-Nxl">
-                                <rect key="frame" x="16" y="158" width="343" height="25.333333333333343"/>
+                                <rect key="frame" x="16" y="185" width="343" height="25.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -269,17 +269,18 @@
                         <constraints>
                             <constraint firstItem="1Ag-Q4-wX1" firstAttribute="trailing" secondItem="0TM-9X-Nxl" secondAttribute="trailing" constant="16" id="1Pg-qK-vcA"/>
                             <constraint firstItem="0TM-9X-Nxl" firstAttribute="leading" secondItem="1Ag-Q4-wX1" secondAttribute="leading" constant="16" id="Ubn-xF-afl"/>
-                            <constraint firstItem="0TM-9X-Nxl" firstAttribute="top" secondItem="1Ag-Q4-wX1" secondAttribute="top" constant="18" id="gt1-SY-Mh8"/>
+                            <constraint firstItem="0TM-9X-Nxl" firstAttribute="top" secondItem="1Ag-Q4-wX1" secondAttribute="top" constant="45" id="gt1-SY-Mh8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Ag-Q4-wX1"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="QWi-Zo-MNY"/>
                     <connections>
                         <outlet property="projectName" destination="0TM-9X-Nxl" id="BnS-My-x9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Djp-cV-2wZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6492" y="-542.36453201970448"/>
+            <point key="canvasLocation" x="7806" y="-542"/>
         </scene>
         <!--Item-->
         <scene sceneID="85v-GV-OeG">
@@ -388,15 +389,32 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="ksF-iR-dSm" kind="show" identifier="projectSegue" id="N7j-ZV-oIy"/>
+                        <segue destination="WeZ-pl-oAn" kind="show" identifier="projectSegue" id="N7j-ZV-oIy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TC-rs-V8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5575" y="-117"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="bsX-hq-kSM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="WeZ-pl-oAn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yum-32-bmA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ksF-iR-dSm" kind="relationship" relationship="viewControllers" id="KNf-a1-7VD"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTi-S3-9tS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6596" y="-542"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N7j-ZV-oIy"/>
+        <segue reference="IuI-AA-rBR"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -136,9 +136,12 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
         } else if segue.identifier == "projectSegue" {
-            if let projectDetail = segue.destination as? ProjectDetailViewController {
-                if let indexPath = sender as? IndexPath {
-                    projectDetail.project = projects[indexPath.row]
+            if let indexPath = sender as? IndexPath {
+                let barViewControllers = segue.destination as! UITabBarController
+                barViewControllers.viewControllers?.forEach {
+                    if let vc = $0 as? ProjectDetailViewController {
+                        vc.project = projects[indexPath.row]
+                    }   
                 }
             }
         }
