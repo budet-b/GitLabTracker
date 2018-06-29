@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1AD9B220E6804900CC2234 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B120E6804900CC2234 /* GroupModel.swift */; };
+		CB1AD9B420E6815E00CC2234 /* GroupProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */; };
 		CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFBFE20E5829400743267 /* AppDelegate.swift */; };
 		CB7DFC0120E5829400743267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC0020E5829400743267 /* ViewController.swift */; };
 		CB7DFC0420E5829400743267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0220E5829400743267 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1C5260431170CC5A74ED2893 /* Pods-GitLabTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitLabTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		AFAE469C26D54F5824F31498 /* Pods-GitLabTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitLabTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker.release.xcconfig"; sourceTree = "<group>"; };
+		CB1AD9B120E6804900CC2234 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB7DFBFB20E5829400743267 /* GitLabTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLabTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7DFBFE20E5829400743267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7DFC0020E5829400743267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				CB7DFC1920E5922200743267 /* UserModel.swift */,
 				CB7DFC2420E6482B00743267 /* ProjectModel.swift */,
+				CB1AD9B120E6804900CC2234 /* GroupModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			children = (
 				CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */,
 				CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */,
+				CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -285,12 +291,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */,
+				CB1AD9B220E6804900CC2234 /* GroupModel.swift in Sources */,
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
 				CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */,
 				CB7DFC1D20E5A53D00743267 /* DashboardViewController.swift in Sources */,
 				CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */,
 				CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */,
 				CB7DFC2220E645CE00743267 /* PersonnalProjectCollectionViewCell.swift in Sources */,
+				CB1AD9B420E6815E00CC2234 /* GroupProjectCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

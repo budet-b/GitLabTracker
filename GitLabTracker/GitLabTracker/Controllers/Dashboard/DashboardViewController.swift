@@ -17,7 +17,9 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     //PersonnalProjectCell
     var userModel = UserModel()
     var projectModel = ProjectModel()
+    var groupModel = GroupeModel()
     var projects : [ProjectModel] = []
+    var groups: [GroupeModel] = []
     let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
     override func viewDidLoad() {
@@ -31,7 +33,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         myActivityIndicator.startAnimating()
         view.addSubview(myActivityIndicator)
         userModel.downloadData(completed: self.updateUI)
-
+        groupModel.downloadData(completed: self.updateGroup)
+        
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
         // Do any additional setup after loading the view.
     }
 
@@ -45,31 +50,59 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         let data = try? Data(contentsOf: userModel.avatarURL!)
         profilPictureImageView.image = UIImage(data: data!)
         projectModel.downloadData(completed: self.updateProject)
-        myActivityIndicator.stopAnimating()
-        myActivityIndicator.removeFromSuperview()
     }
     
     func updateProject(projectsList: [ProjectModel]) {
         print("success")
         self.projects = projectsList
         self.personnalProjectCollectionView.reloadData()
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return projects.count
+        switch collectionView {
+        case personnalProjectCollectionView:
+            return projects.count
+        case groupsCollectionView:
+            return groups.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = personnalProjectCollectionView.dequeueReusableCell(withReuseIdentifier: "PersonnalProjectCell", for: indexPath) as! PersonnalProjectCollectionViewCell
-        let urlImage = projects[indexPath.row].avatarURL!
-        let data = try? Data(contentsOf: urlImage)
-        if (data != nil) {
-            cell.projectImage.image = UIImage(data: data!)
-        } else {
-            cell.projectImage.image = UIImage(named: "placeholder")
+        switch collectionView {
+        case personnalProjectCollectionView:
+            let cell = personnalProjectCollectionView.dequeueReusableCell(withReuseIdentifier: "PersonnalProjectCell", for: indexPath) as! PersonnalProjectCollectionViewCell
+            let urlImage = projects[indexPath.row].avatarURL!
+            let data = try? Data(contentsOf: urlImage)
+            if (data != nil) {
+                cell.projectImage.image = UIImage(data: data!)
+            } else {
+                cell.projectImage.image = UIImage(named: "placeholder")
+            }
+            cell.projectName.text = projects[indexPath.row].name
+            return cell
+        case groupsCollectionView:
+            let cell = groupsCollectionView.dequeueReusableCell(withReuseIdentifier: "GroupProjectCell", for: indexPath) as! GroupProjectCollectionViewCell
+            cell.groupProjectName.text = groups[indexPath.row].name
+            let urlImage = groups[indexPath.row].avatarURL!
+            let data = try? Data(contentsOf: urlImage)
+            if (data != nil) {
+                cell.groupProjectImage.image = UIImage(data: data!)
+            } else {
+                cell.groupProjectImage.image = UIImage(named: "placeholder")
+            }
+            return cell
+        default:
+            let cell = UICollectionViewCell()
+            return cell
         }
-        cell.projectName.text = projects[indexPath.row].name
-        return cell
+    }
+    
+    func updateGroup(groupList: [GroupeModel]) {
+        self.groups = groupList
+        self.groupsCollectionView.reloadData()
     }
 
     /*
