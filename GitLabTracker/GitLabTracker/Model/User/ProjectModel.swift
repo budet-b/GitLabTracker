@@ -37,11 +37,12 @@ class ProjectModel {
     open var openIssuesCount: Int?
     open var runnersToken: String?
     open var publicBuilds: Bool?
-    open var createdAt: Date?
-    open var lastActivityAt: Date?
+    open var createdAt: String?
+    open var lastActivityAt: String?
     open var lfsEnabled: Bool?
     open var onlyAllowMergeIfBuildSucceeds: Bool?
     open var requestAccessEnabled: Bool?
+    open var visibility: String?
     
     let headers: HTTPHeaders = [
         "Private-Token": UserDefaults.standard.value(forKey: "token") as! String,
@@ -63,9 +64,15 @@ class ProjectModel {
                     if let dict = result.value as? [[String: Any]] {
                         print("success")
                         for index in 0..<dict.count {
-                            var tmp = ProjectModel()
-                            guard let newDict = dict[index] as? [String: Any] else { break }
+                            let tmp = ProjectModel()
+                            let newDict = dict[index]
                             tmp.name = newDict["name"] as? String
+                            tmp.visibility = newDict["visibility"] as? String
+                            tmp.lastActivityAt = newDict["last_activity_at"] as? String
+                            tmp.defaultBranch = newDict["default_branch"] as? String
+                            tmp.createdAt = newDict["created_at"] as? String
+                            let urlGit = newDict["ssh_url_to_repo"] as? String ?? ""
+                            tmp.sshURL = URL(string: urlGit)
                             if let urlString = newDict["avatar_url"] as? String, let url = URL(string: urlString) {
                                 tmp.avatarURL = url
                             } else {
@@ -97,9 +104,15 @@ class ProjectModel {
                     if let dict = result.value as? [[String: Any]] {
                         print("success")
                         for index in 0..<dict.count {
-                            var tmp = ProjectModel()
-                            guard let newDict = dict[index] as? [String: Any] else { break }
+                            let tmp = ProjectModel()
+                            let newDict = dict[index]
                             tmp.name = newDict["name"] as? String
+                            tmp.visibility = newDict["visibility"] as? String
+                            tmp.lastActivityAt = newDict["last_activity_at"] as? String
+                            tmp.defaultBranch = newDict["default_branch"] as? String
+                            tmp.createdAt = newDict["created_at"] as? String
+                            let urlGit = newDict["ssh_url_to_repo"] as? String ?? ""
+                            tmp.sshURL = URL(string: urlGit)
                             if let urlString = newDict["avatar_url"] as? String, let url = URL(string: urlString) {
                                 tmp.avatarURL = url
                             } else {

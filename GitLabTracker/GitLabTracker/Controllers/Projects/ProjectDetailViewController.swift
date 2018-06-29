@@ -8,9 +8,16 @@
 
 import UIKit
 
-class ProjectDetailViewController: UIViewController {
+class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var projectName: UILabel!
+    @IBOutlet weak var creationDateLabel: UILabel!
+    @IBOutlet weak var lastActivityLabel: UILabel!
+    @IBOutlet weak var visibilityLabel: UILabel!
+    @IBOutlet weak var defaultBranchLabel: UILabel!
+    @IBOutlet weak var gitUrlLabel: UILabel!
+    @IBOutlet weak var tableViewOutlet: UITableView!
+    
     var project: ProjectModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +28,21 @@ class ProjectDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         projectName.text = project?.name
+        defaultBranchLabel.text = project?.defaultBranch
+        creationDateLabel.text = project?.createdAt?.description
+        lastActivityLabel.text = project?.lastActivityAt?.description
+        gitUrlLabel.text = project?.sshURL?.description
+        visibilityLabel.text = project?.visibility
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
     }
     
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath)
+        return cell
+    }
     /*
     // MARK: - Navigation
 
