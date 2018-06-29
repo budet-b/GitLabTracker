@@ -43,6 +43,7 @@ class GroupeModel {
                                 let url = URL(string: "http://via.placeholder.com/75x75.png")
                                 tmp.avatarURL = url
                             }
+                            tmp.id = newDict["id"] as? Int
                             res.append(tmp)
                         }
                     }

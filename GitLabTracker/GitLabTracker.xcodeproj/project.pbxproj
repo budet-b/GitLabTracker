@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CB1AD9B220E6804900CC2234 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B120E6804900CC2234 /* GroupModel.swift */; };
 		CB1AD9B420E6815E00CC2234 /* GroupProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */; };
+		CB1AD9B720E6D36F00CC2234 /* GroupProjectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B620E6D36F00CC2234 /* GroupProjectsTableViewController.swift */; };
+		CB1AD9B920E6DB0300CC2234 /* GroupProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */; };
+		CB1AD9BB20E6E17100CC2234 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */; };
 		CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFBFE20E5829400743267 /* AppDelegate.swift */; };
 		CB7DFC0120E5829400743267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC0020E5829400743267 /* ViewController.swift */; };
 		CB7DFC0420E5829400743267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0220E5829400743267 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 		AFAE469C26D54F5824F31498 /* Pods-GitLabTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitLabTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitLabTracker/Pods-GitLabTracker.release.xcconfig"; sourceTree = "<group>"; };
 		CB1AD9B120E6804900CC2234 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB1AD9B620E6D36F00CC2234 /* GroupProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProjectsTableViewController.swift; sourceTree = "<group>"; };
+		CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProjectTableViewCell.swift; sourceTree = "<group>"; };
+		CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		CB7DFBFB20E5829400743267 /* GitLabTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLabTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7DFBFE20E5829400743267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7DFC0020E5829400743267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +68,15 @@
 				D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB1AD9B520E6D34A00CC2234 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				CB1AD9B620E6D36F00CC2234 /* GroupProjectsTableViewController.swift */,
+				CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */,
+			);
+			path = Projects;
 			sourceTree = "<group>";
 		};
 		CB7DFBF220E5829400743267 = {
@@ -102,6 +117,7 @@
 		CB7DFC1020E5876F00743267 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB1AD9B520E6D34A00CC2234 /* Projects */,
 				CB7DFC1B20E5A15000743267 /* Dashboard */,
 				CB7DFC1520E5918700743267 /* Login */,
 			);
@@ -164,6 +180,7 @@
 				CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */,
 				CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */,
 				CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */,
+				CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -295,6 +312,9 @@
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
 				CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */,
 				CB7DFC1D20E5A53D00743267 /* DashboardViewController.swift in Sources */,
+				CB1AD9B920E6DB0300CC2234 /* GroupProjectTableViewCell.swift in Sources */,
+				CB1AD9B720E6D36F00CC2234 /* GroupProjectsTableViewController.swift in Sources */,
+				CB1AD9BB20E6E17100CC2234 /* ProjectDetailViewController.swift in Sources */,
 				CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */,
 				CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */,
 				CB7DFC2220E645CE00743267 /* PersonnalProjectCollectionViewCell.swift in Sources */,

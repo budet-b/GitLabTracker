@@ -20,6 +20,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
     var groupModel = GroupeModel()
     var projects : [ProjectModel] = []
     var groups: [GroupeModel] = []
+    var selectedProject: ProjectModel?
+    var selectedGroup: GroupeModel?
     let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
     override func viewDidLoad() {
@@ -38,6 +40,12 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         myActivityIndicator.stopAnimating()
         myActivityIndicator.removeFromSuperview()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedGroup = nil
+        selectedProject = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,14 +113,37 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         self.groupsCollectionView.reloadData()
     }
 
-    /*
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case personnalProjectCollectionView:
+            performSegue(withIdentifier: "projectSegue", sender: indexPath)
+        case groupsCollectionView:
+            performSegue(withIdentifier: "groupsSegue", sender: indexPath)
+        default:
+            return
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "groupsSegue" {
+            if let groupProject = segue.destination as? GroupProjectsTableViewController {
+                if let indexPath = sender as? IndexPath {
+                    groupProject.group = groups[indexPath.row]
+                }
+            }
+        } else if segue.identifier == "projectSegue" {
+            if let projectDetail = segue.destination as? ProjectDetailViewController {
+                if let indexPath = sender as? IndexPath {
+                    projectDetail.project = projects[indexPath.row]
+                }
+            }
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

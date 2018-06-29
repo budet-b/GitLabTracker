@@ -81,4 +81,38 @@ class ProjectModel {
             completed(res)
         })
     }
+    
+    func getProjectFromGroup(idGroup: Int, completed: @escaping ([ProjectModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/groups/\(idGroup)/projects"
+        let url = URL(string: urlString)
+        var res: [ProjectModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            var tmp = ProjectModel()
+                            guard let newDict = dict[index] as? [String: Any] else { break }
+                            tmp.name = newDict["name"] as? String
+                            if let urlString = newDict["avatar_url"] as? String, let url = URL(string: urlString) {
+                                tmp.avatarURL = url
+                            } else {
+                                let url = URL(string: "http://via.placeholder.com/75x75.png")
+                                tmp.avatarURL = url
+                            }
+                            res.append(tmp)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                completed(res)
+            })
+    }
 }
