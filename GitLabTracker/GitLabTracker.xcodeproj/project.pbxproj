@@ -15,6 +15,9 @@
 		CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC1320E5917A00743267 /* LoginViewController.swift */; };
 		CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC1920E5922200743267 /* UserModel.swift */; };
 		CB7DFC1D20E5A53D00743267 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC1C20E5A53D00743267 /* DashboardViewController.swift */; };
+		CB7DFC2220E645CE00743267 /* PersonnalProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */; };
+		CB7DFC2320E645CE00743267 /* PersonnalProjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */; };
+		CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC2420E6482B00743267 /* ProjectModel.swift */; };
 		E8E7562B990E49A4635A4C21 /* Pods_GitLabTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		CB7DFC1320E5917A00743267 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB7DFC1920E5922200743267 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CB7DFC1C20E5A53D00743267 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonnalProjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonnalProjectCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB7DFC2420E6482B00743267 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitLabTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +81,7 @@
 		CB7DFBFD20E5829400743267 /* GitLabTracker */ = {
 			isa = PBXGroup;
 			children = (
+				CB7DFC1E20E6458900743267 /* Layout */,
 				CB7DFC1220E5878900743267 /* Views */,
 				CB7DFC1120E5877B00743267 /* Model */,
 				CB7DFC1020E5876F00743267 /* Controllers */,
@@ -125,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				CB7DFC1920E5922200743267 /* UserModel.swift */,
+				CB7DFC2420E6482B00743267 /* ProjectModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -135,6 +143,23 @@
 				CB7DFC1C20E5A53D00743267 /* DashboardViewController.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		CB7DFC1E20E6458900743267 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DFC1F20E6459200743267 /* Cell */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		CB7DFC1F20E6459200743267 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */,
+				CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EEA0BBA3EADD213ACF66A6D9 /* Pods */ = {
@@ -209,6 +234,7 @@
 				CB7DFC0920E5829700743267 /* LaunchScreen.storyboard in Resources */,
 				CB7DFC0620E5829700743267 /* Assets.xcassets in Resources */,
 				CB7DFC0420E5829400743267 /* Main.storyboard in Resources */,
+				CB7DFC2320E645CE00743267 /* PersonnalProjectCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,9 +286,11 @@
 			files = (
 				CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */,
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
+				CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */,
 				CB7DFC1D20E5A53D00743267 /* DashboardViewController.swift in Sources */,
 				CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */,
 				CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */,
+				CB7DFC2220E645CE00743267 /* PersonnalProjectCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

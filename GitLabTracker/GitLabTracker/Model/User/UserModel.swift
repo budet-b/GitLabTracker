@@ -79,6 +79,7 @@ class UserModel {
                 } else {
                     self.id = -1
                 }
+                UserDefaults.standard.setValue(self.id, forKey: "idUser")
             }
             completed()
         })
