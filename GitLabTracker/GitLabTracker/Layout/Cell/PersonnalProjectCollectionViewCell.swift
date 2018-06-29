@@ -10,6 +10,8 @@ import UIKit
 
 class PersonnalProjectCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var projectName: UILabel!
+    @IBOutlet weak var projectImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -66,6 +66,12 @@ class ProjectModel {
                             var tmp = ProjectModel()
                             guard let newDict = dict[index] as? [String: Any] else { break }
                             tmp.name = newDict["name"] as? String
+                            if let urlString = newDict["avatar_url"] as? String, let url = URL(string: urlString) {
+                                tmp.avatarURL = url
+                            } else {
+                                let url = URL(string: "http://via.placeholder.com/75x75.png")
+                                tmp.avatarURL = url
+                            }
                             res.append(tmp)
                         }
                     }

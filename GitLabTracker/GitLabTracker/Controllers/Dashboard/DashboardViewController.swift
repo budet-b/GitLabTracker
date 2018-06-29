@@ -31,8 +31,6 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         myActivityIndicator.startAnimating()
         view.addSubview(myActivityIndicator)
         userModel.downloadData(completed: self.updateUI)
-        let nib = UINib(nibName: "PersonnalProjectCell", bundle: nil)
-        personnalProjectCollectionView.register(nib, forCellWithReuseIdentifier: "PersonnalProjectCollectionView")
 
         // Do any additional setup after loading the view.
     }
@@ -51,16 +49,26 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         myActivityIndicator.removeFromSuperview()
     }
     
-    func updateProject(projects: [ProjectModel]) {
+    func updateProject(projectsList: [ProjectModel]) {
         print("success")
+        self.projects = projectsList
+        self.personnalProjectCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = personnalProjectCollectionView.dequeueReusableCell(withReuseIdentifier: "PersonnalProjectCollectionView", for: indexPath)
+        let cell = personnalProjectCollectionView.dequeueReusableCell(withReuseIdentifier: "PersonnalProjectCell", for: indexPath) as! PersonnalProjectCollectionViewCell
+        let urlImage = projects[indexPath.row].avatarURL!
+        let data = try? Data(contentsOf: urlImage)
+        if (data != nil) {
+            cell.projectImage.image = UIImage(data: data!)
+        } else {
+            cell.projectImage.image = UIImage(named: "placeholder")
+        }
+        cell.projectName.text = projects[indexPath.row].name
         return cell
     }
 

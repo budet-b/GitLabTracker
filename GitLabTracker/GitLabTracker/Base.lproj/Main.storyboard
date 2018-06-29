@@ -105,20 +105,45 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="KeX-7A-oNt"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q54-U9-b6L">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q54-U9-b6L">
+                                    <size key="itemSize" width="113" height="115"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PersonnalProjectCollectionView" id="rB3-Rq-cYm">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PersonnalProjectCell" id="HAG-g5-d7J" customClass="PersonnalProjectCollectionViewCell" customModule="GitLabTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6.666666666666667" width="113" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="113" height="115"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fp3-QJ-AIE">
+                                                    <rect key="frame" x="21" y="3" width="70" height="70"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waj-Ef-eqU">
+                                                    <rect key="frame" x="7" y="86" width="100" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="waj-Ef-eqU" secondAttribute="trailing" constant="6" id="C95-8V-8DG"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fp3-QJ-AIE" secondAttribute="trailing" constant="22" id="Fgp-eb-zg5"/>
+                                            <constraint firstItem="waj-Ef-eqU" firstAttribute="leading" secondItem="HAG-g5-d7J" secondAttribute="leading" constant="7" id="M3Q-Mq-l1d"/>
+                                            <constraint firstAttribute="bottom" secondItem="waj-Ef-eqU" secondAttribute="bottom" constant="8" id="PaN-8D-4J0"/>
+                                            <constraint firstItem="Fp3-QJ-AIE" firstAttribute="top" secondItem="HAG-g5-d7J" secondAttribute="top" constant="3" id="Rnz-jg-68f"/>
+                                            <constraint firstItem="waj-Ef-eqU" firstAttribute="top" secondItem="Fp3-QJ-AIE" secondAttribute="bottom" constant="13" id="ZC3-yX-Tf2"/>
+                                            <constraint firstItem="Fp3-QJ-AIE" firstAttribute="leading" secondItem="HAG-g5-d7J" secondAttribute="leading" constant="21" id="drz-9t-ned"/>
+                                        </constraints>
+                                        <size key="customSize" width="113" height="115"/>
+                                        <connections>
+                                            <outlet property="projectImage" destination="Fp3-QJ-AIE" id="wGB-zA-AqX"/>
+                                            <outlet property="projectName" destination="waj-Ef-eqU" id="YpP-9X-lhw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -220,6 +245,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Dashboard" largeTitleDisplayMode="always" id="VaQ-41-Oj7"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vvL-xe-sgK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
