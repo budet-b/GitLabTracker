@@ -8,9 +8,17 @@
 
 import UIKit
 
+enum ProjectInformation: Int {
+    case branch = 0
+    case commit = 1
+    case issues = 2
+    case mergeRequest = 3
+    case members = 4
+    case event = 5
+}
+
 class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var creationDateLabel: UILabel!
     @IBOutlet weak var lastActivityLabel: UILabel!
     @IBOutlet weak var visibilityLabel: UILabel!
@@ -27,12 +35,13 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        projectName.text = project?.name
         defaultBranchLabel.text = project?.defaultBranch
         creationDateLabel.text = project?.createdAt?.description
         lastActivityLabel.text = project?.lastActivityAt?.description
         gitUrlLabel.text = project?.sshURL?.description
         visibilityLabel.text = project?.visibility
+
+        self.title = project?.name
         self.tableViewOutlet.tableFooterView = UIView()
     }
     
@@ -73,24 +82,24 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        var url = "https://gitlab.com/api/v4/projects"
+        var type = ProjectInformation.branch
         switch indexPath.row {
         case 0:
-            url = url + String((project?.id)!) + "/repository/branches"
+            type = .branch
         case 1:
-            url = url + String((project?.id)!) + "/repository/commits"
+            type = .commit
         case 2:
-            url = url + String((project?.id)!) + "/issues"
+            type = .issues
         case 3:
-            url = url + String((project?.id)!) + "/merge_requests"
+            type = .mergeRequest
         case 4:
-            url = url + String((project?.id)!) + "/members"
+            type = .members
         case 5:
-            url = url + String((project?.id)!) + "/events"
+            type = .event
         default:
             break
         }
-        performSegue(withIdentifier: "detailProject", sender: url)
+        performSegue(withIdentifier: "detailProject", sender: type)
     }
     
     // MARK: - Navigation
@@ -98,10 +107,10 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailProject" {
-            if let url = sender as? String {
+            if let type = sender as? ProjectInformation {
                 if let vc = segue.destination as? ProjectDetailInfomationTableViewController {
                     vc.project = project
-                    vc.url = url
+                    vc.type = type
                 }
             }
         }

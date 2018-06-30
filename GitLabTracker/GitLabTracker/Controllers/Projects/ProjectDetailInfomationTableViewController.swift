@@ -11,11 +11,20 @@ import UIKit
 class ProjectDetailInfomationTableViewController: UITableViewController {
 
     var project: ProjectModel?
-    var url: String = ""
-
+    var type: ProjectInformation?
+    var branchs: [BranchModel] = []
+    var commits: [CommitModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        switch type! {
+        case .branch:
+            project?.getBranchs(idProject: (project?.id)!, completed: self.updateBranchUI)
+        case .commit:
+            project?.getCommits(idProject: (project?.id)!, completed: self.updateCommitUI)
+        default:
+            break
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,34 +35,75 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = project?.name
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func updateCommitUI(commitList: [CommitModel]) {
+        commits = commitList
+        self.tableView.reloadData()
+    }
+    
+    func updateBranchUI(branchsList: [BranchModel]) {
+        branchs = branchsList
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        switch type! {
+        case .branch :
+            return 1
+        case .commit:
+            return 1
+        default:
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch type! {
+        case .branch:
+            return branchs.count
+        case .commit:
+            return commits.count
+        default:
+            return 0
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableDetailInformation", for: indexPath)
+        switch type! {
+        case .branch:
+            cell.textLabel?.text = branchs[indexPath.row].name
+            if (branchs[indexPath.row].name == project?.defaultBranch) {
+                cell.textLabel?.textColor = UIColor.green
+            }
+            if (branchs[indexPath.row].merged)! {
+                cell.detailTextLabel?.text = "Merged"
+                cell.detailTextLabel?.textColor = UIColor.blue
+            } else {
+                cell.detailTextLabel?.text = "Active"
+                cell.detailTextLabel?.textColor = UIColor.gray
+            }
+        case .commit:
+            cell.textLabel?.text = commits[indexPath.row].message
+            cell.detailTextLabel?.text = commits[indexPath.row].author_name
+        default:
+            break
+        }
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

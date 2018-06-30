@@ -14,12 +14,19 @@ class CommitModel {
     open var title: String?
     open var author_name: String?
     open var committed_date: Date?
+    open var message: String = ""
     
-    init(id: String, title: String, author: String, commit: Date) {
+    init(id: String, title: String, author: String) {
         self.id = id
         self.title = title
         self.author_name = author
-        self.committed_date = commit
+    }
+    
+    init(id: String, title: String, author: String, message: String) {
+        self.id = id
+        self.title = title
+        self.author_name = author
+        self.message = message
     }
 }
 
@@ -172,9 +179,44 @@ class ProjectModel {
                             tmp.name = newDict["name"] as? String
                             tmp.merged = newDict["merged"] as? Bool
                             tmp.protected = newDict["protected"] as? Bool
-                            let commitDict = newDict["commit"] as? [String: Any]
-                            let commit = CommitModel(id: commitDict!["id"] as! String, title: commitDict!["title"] as! String, author: commitDict!["author_name"] as! String, commit: commitDict!["committed_date"] as! Date)
+                            guard let commitDict = newDict["commit"] as? [String: Any] else { continue }
+                            let idCommit = commitDict["id"] as? String
+                            let titleCommit = commitDict["title"] as? String
+                            let authorCommit =  commitDict["author_name"] as? String
+                            //let dateCommit = commitDict["committed_date"] as? String
+                            let commit = CommitModel(id: idCommit!, title: titleCommit!, author: authorCommit!)
                             tmp.commit = commit
+                            res.append(tmp)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                completed(res)
+            })
+    }
+    
+    func getCommits(idProject: Int, completed: @escaping ([CommitModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/repository/commits"
+        let url = URL(string: urlString)
+        var res: [CommitModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let idCommit = newDict["id"] as? String else {continue}
+                            guard let titleCommit = newDict["title"] as? String else {continue}
+                            guard let authorCommit =  newDict["author_name"] as? String else {continue}
+                            guard let messageCommit = newDict["message"] as? String else {continue}
+                            let tmp = CommitModel(id: idCommit, title: titleCommit, author: authorCommit, message: messageCommit)
                             res.append(tmp)
                         }
                     }
