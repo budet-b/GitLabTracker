@@ -9,6 +9,27 @@
 import Foundation
 import Alamofire
 
+class CommitModel {
+    open var id: String?
+    open var title: String?
+    open var author_name: String?
+    open var committed_date: Date?
+    
+    init(id: String, title: String, author: String, commit: Date) {
+        self.id = id
+        self.title = title
+        self.author_name = author
+        self.committed_date = commit
+    }
+}
+
+class BranchModel {
+    open var name: String?
+    open var commit: CommitModel?
+    open var merged: Bool?
+    open var protected: Bool?
+}
+
 class ProjectModel {
     open var id: Int?
     open var name: String?
@@ -66,6 +87,7 @@ class ProjectModel {
                         for index in 0..<dict.count {
                             let tmp = ProjectModel()
                             let newDict = dict[index]
+                            tmp.id = newDict["id"] as? Int
                             tmp.name = newDict["name"] as? String
                             tmp.visibility = newDict["visibility"] as? String
                             tmp.lastActivityAt = newDict["last_activity_at"] as? String
@@ -106,6 +128,7 @@ class ProjectModel {
                         for index in 0..<dict.count {
                             let tmp = ProjectModel()
                             let newDict = dict[index]
+                            tmp.id = newDict["id"] as? Int
                             tmp.name = newDict["name"] as? String
                             tmp.visibility = newDict["visibility"] as? String
                             tmp.lastActivityAt = newDict["last_activity_at"] as? String
@@ -128,4 +151,38 @@ class ProjectModel {
                 completed(res)
             })
     }
+    
+    func getBranchs(idProject: Int, completed: @escaping ([BranchModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/repository/branches"
+        let url = URL(string: urlString)
+        var res: [BranchModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let tmp = BranchModel()
+                            let newDict = dict[index]
+                            tmp.name = newDict["name"] as? String
+                            tmp.merged = newDict["merged"] as? Bool
+                            tmp.protected = newDict["protected"] as? Bool
+                            let commitDict = newDict["commit"] as? [String: Any]
+                            let commit = CommitModel(id: commitDict!["id"] as! String, title: commitDict!["title"] as! String, author: commitDict!["author_name"] as! String, commit: commitDict!["committed_date"] as! Date)
+                            tmp.commit = commit
+                            res.append(tmp)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                completed(res)
+            })
+    }
+    
 }

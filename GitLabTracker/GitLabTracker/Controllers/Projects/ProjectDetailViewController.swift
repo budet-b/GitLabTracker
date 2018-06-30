@@ -70,14 +70,43 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return cell
     }
-    /*
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var url = "https://gitlab.com/api/v4/projects"
+        switch indexPath.row {
+        case 0:
+            url = url + String((project?.id)!) + "/repository/branches"
+        case 1:
+            url = url + String((project?.id)!) + "/repository/commits"
+        case 2:
+            url = url + String((project?.id)!) + "/issues"
+        case 3:
+            url = url + String((project?.id)!) + "/merge_requests"
+        case 4:
+            url = url + String((project?.id)!) + "/members"
+        case 5:
+            url = url + String((project?.id)!) + "/events"
+        default:
+            break
+        }
+        performSegue(withIdentifier: "detailProject", sender: url)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailProject" {
+            if let url = sender as? String {
+                if let vc = segue.destination as? ProjectDetailInfomationTableViewController {
+                    vc.project = project
+                    vc.url = url
+                }
+            }
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

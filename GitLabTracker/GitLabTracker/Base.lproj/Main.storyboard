@@ -406,11 +406,40 @@
                         <outlet property="projectName" destination="0TM-9X-Nxl" id="BnS-My-x9O"/>
                         <outlet property="tableViewOutlet" destination="zVa-WL-5zW" id="dAv-Hl-P7K"/>
                         <outlet property="visibilityLabel" destination="mhX-TA-9vl" id="eEA-di-xm9"/>
+                        <segue destination="Aa1-w7-HjI" kind="show" identifier="detailProject" id="EKf-9Y-5lr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Djp-cV-2wZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7389.6000000000004" y="-542.36453201970448"/>
+            <point key="canvasLocation" x="7377" y="-740"/>
+        </scene>
+        <!--Project Detail Infomation Table View Controller-->
+        <scene sceneID="ohs-98-NvX">
+            <objects>
+                <tableViewController id="Aa1-w7-HjI" customClass="ProjectDetailInfomationTableViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EmI-YH-eyk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wGM-wG-QFe">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wGM-wG-QFe" id="g7x-Sv-OnT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Aa1-w7-HjI" id="lEw-dB-9j1"/>
+                            <outlet property="delegate" destination="Aa1-w7-HjI" id="nnB-BP-8rU"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vTo-yS-56A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8282" y="-740"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZGi-Hg-LnJ">
@@ -426,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ur-bZ-Qgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8174" y="-542"/>
+            <point key="canvasLocation" x="7378" y="58"/>
         </scene>
         <!--Item-->
         <scene sceneID="85v-GV-OeG">
@@ -562,6 +591,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IuI-AA-rBR"/>
+        <segue reference="N7j-ZV-oIy"/>
     </inferredMetricsTieBreakers>
 </document>
