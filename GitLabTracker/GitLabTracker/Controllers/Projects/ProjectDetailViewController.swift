@@ -33,14 +33,41 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
         lastActivityLabel.text = project?.lastActivityAt?.description
         gitUrlLabel.text = project?.sshURL?.description
         visibilityLabel.text = project?.visibility
+        self.tableViewOutlet.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 6
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "projectCell", for: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "Branch"
+            cell.imageView?.image = UIImage(named: "branchIcon")
+        case 1:
+            cell.textLabel?.text = "Commits"
+            cell.imageView?.image = UIImage(named: "commitIcon")
+        case 2:
+            cell.textLabel?.text = "Issues"
+            cell.imageView?.image = UIImage(named: "issueIcon")
+        case 3:
+            cell.textLabel?.text = "Merge requests"
+            cell.imageView?.image = UIImage(named: "mrIcon")
+        case 4:
+            cell.textLabel?.text = "Members"
+            cell.imageView?.image = UIImage(named: "memberIcon")
+        case 5:
+            cell.textLabel?.text = "Events"
+            cell.imageView?.image = UIImage(named: "activityIcon")
+        default:
+            cell.textLabel?.text = ""
+        }
         return cell
     }
     /*
