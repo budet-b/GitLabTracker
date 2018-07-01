@@ -62,6 +62,11 @@ class ProjectCITableViewController: UITableViewController {
         return cell
     }
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailPipeline", sender: indexPath)
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -97,14 +102,20 @@ class ProjectCITableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailPipeline" {
+            if let indexPath = sender as? IndexPath {
+                if let vc = segue.destination as? PipelineDetailViewController {
+                    vc.project = project
+                    vc.pipeline = ci[indexPath.row]
+                }
+            }
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

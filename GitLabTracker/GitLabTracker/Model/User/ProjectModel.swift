@@ -9,6 +9,19 @@
 import Foundation
 import Alamofire
 
+class PipelineModel {
+    open var id: Int?
+    open var ref: String?
+    open var status: String?
+    open var createdAt: Date?
+    open var finishedAt: Date?
+    open var duration: Int?
+    open var triggerByName: String?
+    open var triggerByUserame: String?
+    open var triggerByUrl: String?
+
+}
+
 class CIModel {
     open var id: Int?
     open var ref: String?
@@ -263,6 +276,49 @@ class ProjectModel {
                     print(error)
                 }
                 completed(res)
+            })
+    }
+    
+    func getSingleCI(idProject: Int, idPipeline: Int, completed: @escaping (PipelineModel?) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/pipelines/\(idPipeline)"
+        let url = URL(string: urlString)
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [String: Any] {
+                        print("success")
+                        guard let idCI = dict["id"] as? Int else {return}
+                        guard let refCI = dict["ref"] as? String else {return}
+                        guard let statusCI =  dict["status"] as? String else {return}
+                        guard let createdAt = dict["created_at"] as? Date else {return}
+                        guard let finishedAt = dict["finished_at"] as? Date else {return}
+                        guard let duration =  dict["duration"] as? Int else {return}
+                        
+                        guard let newDict = dict["user"] as? [String: Any] else {return}
+                        guard let userName = newDict["name"] as? String else {return}
+                        guard let userUsername = newDict["username"] as? String else {return}
+                        guard let userAvatar = newDict["avatar_url"] as? String else {return}
+                        let pipeline = PipelineModel()
+                        pipeline.id = idCI
+                        pipeline.ref = refCI
+                        pipeline.status = statusCI
+                        pipeline.createdAt = createdAt
+                        pipeline.finishedAt = finishedAt
+                        pipeline.duration = duration
+                        pipeline.triggerByName = userName
+                        pipeline.triggerByUserame = userUsername
+                        pipeline.triggerByUrl = userAvatar
+                        completed(pipeline)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                completed(nil)
             })
     }
     
