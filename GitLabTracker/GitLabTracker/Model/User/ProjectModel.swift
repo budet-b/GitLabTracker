@@ -13,8 +13,8 @@ class PipelineModel {
     open var id: Int?
     open var ref: String?
     open var status: String?
-    open var createdAt: Date?
-    open var finishedAt: Date?
+    open var createdAt: String?
+    open var finishedAt: String?
     open var duration: Int?
     open var triggerByName: String?
     open var triggerByUserame: String?
@@ -295,8 +295,8 @@ class ProjectModel {
                         guard let idCI = dict["id"] as? Int else {return}
                         guard let refCI = dict["ref"] as? String else {return}
                         guard let statusCI =  dict["status"] as? String else {return}
-                        guard let createdAt = dict["created_at"] as? Date else {return}
-                        guard let finishedAt = dict["finished_at"] as? Date else {return}
+                        guard let createdAt = dict["created_at"] as? String else {return}
+                        guard let finishedAt = dict["finished_at"] as? String else {return}
                         guard let duration =  dict["duration"] as? Int else {return}
                         
                         guard let newDict = dict["user"] as? [String: Any] else {return}

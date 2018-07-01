@@ -14,6 +14,20 @@ class PipelineDetailViewController: UIViewController {
     var project: ProjectModel?
     var pipelineDetail: PipelineModel?
     
+    @IBOutlet weak var branchNameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
+    
+    @IBOutlet weak var finishedAtLabel: UILabel!
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    @IBOutlet weak var triggeredByLabel: UILabel!
+    
+    @IBOutlet weak var triggeredByAvatar: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         project?.getSingleCI(idProject: (project?.id)!, idPipeline: (pipeline?.id)!, completed: self.updateUI)
@@ -25,12 +39,21 @@ class PipelineDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateUI(pipeline: PipelineModel?) {
-        if (pipeline != nil) {
-            pipelineDetail = pipeline
+    func updateUI(pipelineReceived: PipelineModel?) {
+        if (pipelineReceived != nil) {
+            pipelineDetail = pipelineReceived
+            branchNameLabel.text = pipeline?.ref
+            statusLabel.text = pipelineDetail?.status
+            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.zzzz", to: "MMMM dd yyyy", dateString: pipelineDetail?.createdAt)
+            createdAtLabel.text = res
         }
     }
-
+    
+    
+    
+    @IBAction func retryJobClicked(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -41,4 +64,21 @@ class PipelineDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension Date {
+    static func convertDateFormat(from: String, to: String, dateString: String?) -> String? {
+        let fromDateFormatter = DateFormatter()
+        fromDateFormatter.dateFormat = from
+        var formattedDateString: String? = nil
+        if dateString != nil {
+            let formattedDate = fromDateFormatter.date(from: dateString!)
+            if formattedDate != nil {
+                let toDateFormatter = DateFormatter()
+                toDateFormatter.dateFormat = to
+                formattedDateString = toDateFormatter.string(from: formattedDate!)
+            }
+        }
+        return formattedDateString
+    }
 }
