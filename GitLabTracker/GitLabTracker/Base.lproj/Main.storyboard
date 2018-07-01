@@ -250,7 +250,7 @@
             </objects>
             <point key="canvasLocation" x="4554" y="-542"/>
         </scene>
-        <!--Project Detail View Controller-->
+        <!--Detail-->
         <scene sceneID="2nb-m8-u2k">
             <objects>
                 <viewController id="ksF-iR-dSm" customClass="ProjectDetailViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -387,7 +387,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Ag-Q4-wX1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="QWi-Zo-MNY"/>
+                    <tabBarItem key="tabBarItem" title="Detail" image="homeIcon" id="QWi-Zo-MNY"/>
                     <connections>
                         <outlet property="creationDateLabel" destination="IPN-7H-2vV" id="Mhd-VB-vGz"/>
                         <outlet property="defaultBranchLabel" destination="Ib1-mk-h45" id="TMd-44-48d"/>
@@ -446,21 +446,50 @@
             </objects>
             <point key="canvasLocation" x="8282" y="-740"/>
         </scene>
-        <!--CI-->
-        <scene sceneID="ZGi-Hg-LnJ">
+        <!--Pipelines-->
+        <scene sceneID="RTU-a3-4Bg">
             <objects>
-                <viewController id="KPb-pT-UJi" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wXs-8p-85h">
+                <tableViewController id="ylj-k1-BMa" customClass="ProjectCITableViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qUE-aZ-M78">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="uaY-mm-B4U"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="CI" id="8m7-JX-lA5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ur-bZ-Qgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CICell" textLabel="qKX-mv-BPh" detailTextLabel="mGc-aL-dt5" style="IBUITableViewCellStyleValue1" id="Owf-U1-cJb">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Owf-U1-cJb" id="vIn-fD-QoG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qKX-mv-BPh">
+                                            <rect key="frame" x="16.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mGc-aL-dt5">
+                                            <rect key="frame" x="315" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ylj-k1-BMa" id="HlX-OT-ARL"/>
+                            <outlet property="delegate" destination="ylj-k1-BMa" id="gSB-W8-2p2"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Pipelines" image="ciIcon" id="ncF-uM-qdv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOR-OJ-GvA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7378" y="58"/>
+            <point key="canvasLocation" x="7377" y="-53"/>
         </scene>
         <!--Item-->
         <scene sceneID="85v-GV-OeG">
@@ -581,13 +610,14 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="WeZ-pl-oAn" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yum-32-bmA">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="ksF-iR-dSm" kind="relationship" relationship="viewControllers" id="KNf-a1-7VD"/>
-                        <segue destination="KPb-pT-UJi" kind="relationship" relationship="viewControllers" id="Llq-Vc-KAg"/>
+                        <segue destination="ylj-k1-BMa" kind="relationship" relationship="viewControllers" id="sUy-9u-nTp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTi-S3-9tS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,7 +625,11 @@
             <point key="canvasLocation" x="6596" y="-542"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ciIcon" width="30" height="30"/>
+        <image name="homeIcon" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="N7j-ZV-oIy"/>
+        <segue reference="IuI-AA-rBR"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,37 +1,35 @@
 //
-//  GroupProjectsTableViewController.swift
+//  ProjectCITableViewController.swift
 //  GitLabTracker
 //
-//  Created by Benjamin_Budet on 29/06/2018.
+//  Created by Benjamin_Budet on 01/07/2018.
 //  Copyright © 2018 Benjamin Budet. All rights reserved.
 //
 
 import UIKit
 
-class GroupProjectsTableViewController: UITableViewController {
-    var group: GroupeModel?
-    var projects: [ProjectModel] = []
+class ProjectCITableViewController: UITableViewController {
+
+    var project: ProjectModel?
+    var ci: [CIModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let proj = ProjectModel()
-        if group != nil {
-            proj.getProjectFromGroup(idGroup: (group?.id)!, completed: self.updateUI)
-        }
-
+        project?.getCI(idProject: (project?.id)!, completed: self.updateUI)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.tableFooterView = UIView()
+        
     }
-
-    func updateUI(projectsList: [ProjectModel]) {
-        projects = projectsList
+    
+    func updateUI(CIlist: [CIModel]) {
+        ci = CIlist
         self.tableView.reloadData()
     }
     
@@ -49,25 +47,19 @@ class GroupProjectsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return projects.count
+        return ci.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupProjectCell", for: indexPath) as! GroupProjectTableViewCell
-        cell.projectName.text = projects[indexPath.row].name
-        let urlImage = projects[indexPath.row].avatarURL!
-        let data = try? Data(contentsOf: urlImage)
-        if (data != nil) {
-            cell.projectImage.image = UIImage(data: data!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CICell", for: indexPath)
+        cell.textLabel?.text = ci[indexPath.row].ref
+        cell.detailTextLabel?.text = ci[indexPath.row].status
+        if (ci[indexPath.row].status == "success") {
+            cell.detailTextLabel?.textColor = UIColor.green
         } else {
-            cell.projectImage.image = UIImage(named: "placeholder")
+            cell.detailTextLabel?.textColor = UIColor.red
         }
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "projectSegue", sender: indexPath)
     }
 
     /*
@@ -105,26 +97,14 @@ class GroupProjectsTableViewController: UITableViewController {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "projectSegue" {
-            if let indexPath = sender as? IndexPath {
-                let barViewControllers = segue.destination as! UITabBarController
-                barViewControllers.viewControllers?.forEach {
-                    if let vc = $0 as? ProjectDetailViewController {
-                        vc.project = projects[indexPath.row]
-                    }
-                    if let vc = $0 as? ProjectCITableViewController {
-                        vc.project = projects[indexPath.row]
-                    }
-                }
-            }
-        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    */
 
 }

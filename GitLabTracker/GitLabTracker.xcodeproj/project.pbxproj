@@ -13,6 +13,7 @@
 		CB1AD9B920E6DB0300CC2234 /* GroupProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */; };
 		CB1AD9BB20E6E17100CC2234 /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */; };
 		CB1AD9BD20E7B0D300CC2234 /* ProjectDetailInfomationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9BC20E7B0D300CC2234 /* ProjectDetailInfomationTableViewController.swift */; };
+		CB1AD9BF20E841CA00CC2234 /* ProjectCITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AD9BE20E841CA00CC2234 /* ProjectCITableViewController.swift */; };
 		CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFBFE20E5829400743267 /* AppDelegate.swift */; };
 		CB7DFC0120E5829400743267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC0020E5829400743267 /* ViewController.swift */; };
 		CB7DFC0420E5829400743267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC0220E5829400743267 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProjectTableViewCell.swift; sourceTree = "<group>"; };
 		CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		CB1AD9BC20E7B0D300CC2234 /* ProjectDetailInfomationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailInfomationTableViewController.swift; sourceTree = "<group>"; };
+		CB1AD9BE20E841CA00CC2234 /* ProjectCITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCITableViewController.swift; sourceTree = "<group>"; };
 		CB7DFBFB20E5829400743267 /* GitLabTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLabTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7DFBFE20E5829400743267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7DFC0020E5829400743267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				CB1AD9B620E6D36F00CC2234 /* GroupProjectsTableViewController.swift */,
 				CB1AD9BA20E6E17100CC2234 /* ProjectDetailViewController.swift */,
 				CB1AD9BC20E7B0D300CC2234 /* ProjectDetailInfomationTableViewController.swift */,
+				CB1AD9BE20E841CA00CC2234 /* ProjectCITableViewController.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */,
 				CB1AD9B220E6804900CC2234 /* GroupModel.swift in Sources */,
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
+				CB1AD9BF20E841CA00CC2234 /* ProjectCITableViewController.swift in Sources */,
 				CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */,
 				CB7DFC1D20E5A53D00743267 /* DashboardViewController.swift in Sources */,
 				CB1AD9B920E6DB0300CC2234 /* GroupProjectTableViewCell.swift in Sources */,

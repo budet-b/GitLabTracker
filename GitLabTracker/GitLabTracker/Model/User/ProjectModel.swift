@@ -9,6 +9,12 @@
 import Foundation
 import Alamofire
 
+class CIModel {
+    open var id: Int?
+    open var ref: String?
+    open var status: String?
+}
+
 class CommitModel {
     open var id: String?
     open var title: String?
@@ -218,6 +224,39 @@ class ProjectModel {
                             guard let messageCommit = newDict["message"] as? String else {continue}
                             let tmp = CommitModel(id: idCommit, title: titleCommit, author: authorCommit, message: messageCommit)
                             res.append(tmp)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                completed(res)
+            })
+    }
+    
+    func getCI(idProject: Int, completed: @escaping ([CIModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/pipelines"
+        let url = URL(string: urlString)
+        var res: [CIModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let idCI = newDict["id"] as? Int else {continue}
+                            guard let refCI = newDict["ref"] as? String else {continue}
+                            guard let statusCI =  newDict["status"] as? String else {continue}
+                            let ci = CIModel()
+                            ci.id = idCI
+                            ci.ref = refCI
+                            ci.status = statusCI
+                            res.append(ci)
                         }
                     }
                 case .failure(let error):

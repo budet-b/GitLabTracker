@@ -141,7 +141,10 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
                 barViewControllers.viewControllers?.forEach {
                     if let vc = $0 as? ProjectDetailViewController {
                         vc.project = projects[indexPath.row]
-                    }   
+                    }
+                    if let vc = $0 as? ProjectCITableViewController {
+                        vc.project = projects[indexPath.row]
+                    }
                 }
             }
         }

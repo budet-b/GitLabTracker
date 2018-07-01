@@ -40,8 +40,9 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
         lastActivityLabel.text = project?.lastActivityAt?.description
         gitUrlLabel.text = project?.sshURL?.description
         visibilityLabel.text = project?.visibility
-
-        self.title = project?.name
+        self.title = "didier"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.tableViewOutlet.tableFooterView = UIView()
     }
     
