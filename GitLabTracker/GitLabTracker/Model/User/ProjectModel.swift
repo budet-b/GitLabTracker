@@ -19,7 +19,29 @@ class PipelineModel {
     open var triggerByName: String?
     open var triggerByUserame: String?
     open var triggerByUrl: String?
-
+    
+    let headers: HTTPHeaders = [
+        "Private-Token": UserDefaults.standard.value(forKey: "token") as! String,
+        "Accept": "application/json"
+    ]
+    
+    func retryJob(idProject: Int, pipelineId: Int, completed: @escaping (Bool) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/pipelines/\(pipelineId)/retry"
+        let url = URL(string: urlString)
+        var res = false
+        Alamofire.request(url!, method: .post, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    res = true
+                case .failure(_):
+                    break
+                }
+                completed(res)
+            })
+    }
 }
 
 class CIModel {

@@ -44,14 +44,59 @@ class PipelineDetailViewController: UIViewController {
             pipelineDetail = pipelineReceived
             branchNameLabel.text = pipeline?.ref
             statusLabel.text = pipelineDetail?.status
-            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.zzzz", to: "MMMM dd yyyy", dateString: pipelineDetail?.createdAt)
+            if (statusLabel.text == "success") {
+                statusLabel.textColor = UIColor.green
+            } else {
+                statusLabel.textColor = UIColor.red
+            }
+            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.sssZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.createdAt)
+            let res2  = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.sssZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.finishedAt)
+            finishedAtLabel.text = res2
+            triggeredByLabel.text = pipelineDetail?.triggerByName
+            let url = URL(string: (pipelineDetail?.triggerByUrl)!)
+            let data = try? Data(contentsOf: url!)
+            if (data != nil) {
+                triggeredByAvatar.image = UIImage(data: data!)
+            } else {
+                triggeredByAvatar.image = UIImage(named: "placeholder")
+            }
+            let (_,m,s) = secondsToHoursMinutesSeconds(seconds: (pipelineDetail?.duration)!)
             createdAtLabel.text = res
+            let minutes = String(m)
+            let seconds = String(s)
+            let finalString = "\(minutes) : \(seconds)"
+            durationLabel.text = finalString
         }
     }
     
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
     
     
     @IBAction func retryJobClicked(_ sender: Any) {
+        if pipelineDetail?.status == "success" {
+            let alert = UIAlertController(title: "Job Retry", message: "Cannot retry a succedded job", preferredStyle: .actionSheet)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        } else {
+            if (pipelineDetail != nil) {
+                pipelineDetail?.retryJob(idProject: (project?.id)!, pipelineId: (pipeline?.id)!, completed: self.finishedRetry)
+            }
+        }
+    }
+    
+    func finishedRetry(res: Bool) {
+        if (res) {
+            let alert = UIAlertController(title: "Job Retry", message: "success", preferredStyle: .actionSheet)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Job Retry", message: "fail", preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     /*
