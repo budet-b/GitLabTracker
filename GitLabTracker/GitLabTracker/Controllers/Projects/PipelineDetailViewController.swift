@@ -14,6 +14,7 @@ class PipelineDetailViewController: UIViewController {
     var project: ProjectModel?
     var pipelineDetail: PipelineModel?
     
+    @IBOutlet weak var retryJobButton: UIButton!
     @IBOutlet weak var branchNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var createdAtLabel: UILabel!
@@ -49,8 +50,8 @@ class PipelineDetailViewController: UIViewController {
             } else {
                 statusLabel.textColor = UIColor.red
             }
-            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.sssZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.createdAt)
-            let res2  = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.sssZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.finishedAt)
+            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.createdAt)
+            let res2  = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", to: "MMMM dd yyyy HH:mm", dateString: pipelineDetail?.finishedAt)
             finishedAtLabel.text = res2
             triggeredByLabel.text = pipelineDetail?.triggerByName
             let url = URL(string: (pipelineDetail?.triggerByUrl)!)
