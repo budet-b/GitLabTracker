@@ -44,6 +44,13 @@ class PipelineModel {
     }
 }
 
+class IssueModel {
+    open var state: String?
+    open var description: String?
+    open var title: String?
+    open var createdAt: String?
+}
+
 class CIModel {
     open var id: Int?
     open var ref: String?
@@ -344,4 +351,38 @@ class ProjectModel {
             })
     }
     
+    func getIssuesFromProject(idProject: Int, completed: @escaping ([IssueModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/issues"
+        let url = URL(string: urlString)
+        var res: [IssueModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let createdAt = newDict["created_at"] as? String else {continue}
+                            guard let state = newDict["state"] as? String else {continue}
+                            guard let description =  newDict["description"] as? String else {continue}
+                            guard let title =  newDict["title"] as? String else {continue}
+                            let issue = IssueModel()
+                            issue.createdAt = createdAt
+                            issue.state = state
+                            issue.description = description
+                            issue.title = title
+                            res.append(issue)
+                        }
+                    }
+                case .failure(_):
+                    print("error")
+                }
+                completed(res)
+            })
+    }
 }

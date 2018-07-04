@@ -14,6 +14,7 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     var type: ProjectInformation?
     var branchs: [BranchModel] = []
     var commits: [CommitModel] = []
+    var issues: [IssueModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             project?.getBranchs(idProject: (project?.id)!, completed: self.updateBranchUI)
         case .commit:
             project?.getCommits(idProject: (project?.id)!, completed: self.updateCommitUI)
+        case .issues:
+            project?.getIssuesFromProject(idProject: (project?.id)!, completed: self.updateIssueUI)
         default:
             break
         }
@@ -48,6 +51,11 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func updateIssueUI(issueList: [IssueModel]) {
+        issues = issueList
+        self.tableView.reloadData()
+    }
+    
     func updateBranchUI(branchsList: [BranchModel]) {
         branchs = branchsList
         self.tableView.reloadData()
@@ -62,6 +70,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             return 1
         case .commit:
             return 1
+        case .issues:
+            return 1
         default:
             return 0
         }
@@ -74,6 +84,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             return branchs.count
         case .commit:
             return commits.count
+        case .issues:
+            return issues.count
         default:
             return 0
         }
@@ -97,6 +109,9 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         case .commit:
             cell.textLabel?.text = commits[indexPath.row].message
             cell.detailTextLabel?.text = commits[indexPath.row].author_name
+        case .issues:
+            cell.textLabel?.text = issues[indexPath.row].title
+            cell.detailTextLabel?.text = issues[indexPath.row].description
         default:
             break
         }
