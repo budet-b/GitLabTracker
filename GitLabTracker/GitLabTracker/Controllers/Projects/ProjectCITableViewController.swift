@@ -30,6 +30,15 @@ class ProjectCITableViewController: UITableViewController {
     
     func updateUI(CIlist: [CIModel]) {
         ci = CIlist
+        if (CIlist.count == 0) {
+            let alert = UIAlertController(title: "No CI found", message: "Maybe you should set a CI on your project", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction((UIAlertAction(title: "Ok", style: .default, handler:
+                { (action) -> Void in
+                    self.navigationController?.popViewController(animated: true)
+            })))
+            self.present(alert, animated: true, completion: nil)
+        }
         self.tableView.reloadData()
     }
     

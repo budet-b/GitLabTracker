@@ -35,12 +35,14 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let createdAt = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", to: "MMMM dd yyyy HH:mm", dateString: project?.createdAt)
+        let lastActivity = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", to: "MMMM dd yyyy HH:mm", dateString: project?.lastActivityAt)
+
         defaultBranchLabel.text = project?.defaultBranch
-        creationDateLabel.text = project?.createdAt?.description
-        lastActivityLabel.text = project?.lastActivityAt?.description
+        creationDateLabel.text = createdAt
+        lastActivityLabel.text = lastActivity
         gitUrlLabel.text = project?.sshURL?.description
         visibilityLabel.text = project?.visibility
-        self.title = "didier"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.tableViewOutlet.tableFooterView = UIView()

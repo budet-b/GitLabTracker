@@ -155,10 +155,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lAh-ob-PeW">
-                                <rect key="frame" x="16" y="504" width="343" height="128"/>
+                                <rect key="frame" x="16" y="504" width="343" height="206"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="m4w-2x-82O"/>
+                                    <constraint firstAttribute="height" constant="206" id="77y-cz-MJY"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wCO-vi-sQ5">
                                     <size key="itemSize" width="164" height="115"/>
@@ -217,6 +217,7 @@
                             <constraint firstItem="guX-ZB-fN8" firstAttribute="top" secondItem="Gwz-K1-FhB" secondAttribute="bottom" constant="24" id="K3C-aN-qz4"/>
                             <constraint firstItem="4jW-pr-hJM" firstAttribute="trailing" secondItem="lAh-ob-PeW" secondAttribute="trailing" constant="16" id="K7e-zn-0uf"/>
                             <constraint firstItem="Gwz-K1-FhB" firstAttribute="leading" secondItem="4jW-pr-hJM" secondAttribute="leading" constant="16" id="Pdm-Og-Zwz"/>
+                            <constraint firstItem="4jW-pr-hJM" firstAttribute="bottom" secondItem="lAh-ob-PeW" secondAttribute="bottom" constant="19" id="YiU-0s-RWu"/>
                             <constraint firstItem="xBP-co-Qev" firstAttribute="top" secondItem="4jW-pr-hJM" secondAttribute="top" constant="10" id="a0u-kR-yTS"/>
                             <constraint firstItem="lAh-ob-PeW" firstAttribute="top" secondItem="guX-ZB-fN8" secondAttribute="bottom" constant="23" id="a6C-AW-CW3"/>
                             <constraint firstItem="guX-ZB-fN8" firstAttribute="leading" secondItem="4jW-pr-hJM" secondAttribute="leading" constant="16" id="b5C-iV-cc1"/>
@@ -226,7 +227,6 @@
                             <constraint firstItem="4jW-pr-hJM" firstAttribute="trailing" secondItem="wqc-7y-jjg" secondAttribute="trailing" constant="16" id="hBL-r1-ni6"/>
                             <constraint firstItem="4jW-pr-hJM" firstAttribute="trailing" secondItem="guX-ZB-fN8" secondAttribute="trailing" constant="16" id="lSS-Cd-Afu"/>
                             <constraint firstAttribute="trailing" secondItem="yuj-RH-TWc" secondAttribute="trailing" constant="12" id="ldB-oj-WJA"/>
-                            <constraint firstItem="4jW-pr-hJM" firstAttribute="bottom" secondItem="lAh-ob-PeW" secondAttribute="bottom" constant="97" id="t77-GO-kBx"/>
                             <constraint firstItem="4jW-pr-hJM" firstAttribute="trailing" secondItem="Gwz-K1-FhB" secondAttribute="trailing" constant="16" id="uNw-53-qUu"/>
                             <constraint firstItem="wqc-7y-jjg" firstAttribute="leading" secondItem="4jW-pr-hJM" secondAttribute="leading" constant="16" id="xpu-XF-eEc"/>
                             <constraint firstItem="yuj-RH-TWc" firstAttribute="top" secondItem="gqo-8q-oyC" secondAttribute="bottom" constant="28" id="zMg-Ln-yRE"/>
@@ -248,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOS-v9-LIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4554" y="-542"/>
+            <point key="canvasLocation" x="4552.8000000000002" y="-542.36453201970448"/>
         </scene>
         <!--Detail-->
         <scene sceneID="2nb-m8-u2k">
@@ -269,7 +269,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPN-7H-2vV">
                                 <rect key="frame" x="188" y="167" width="171" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -284,7 +284,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCu-I5-Fpe">
                                 <rect key="frame" x="188" y="196" width="171" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
