@@ -53,7 +53,17 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     
     func updateIssueUI(issueList: [IssueModel]) {
         issues = issueList
-        self.tableView.reloadData()
+        if (issues.count == 0) {
+            let alert = UIAlertController(title: "No issue found", message: "Good job, no issue found on your project !", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction((UIAlertAction(title: "Ok", style: .default, handler:
+                { (action) -> Void in
+                    self.navigationController?.popViewController(animated: true)
+            })))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.tableView.reloadData()
+        }
     }
     
     func updateBranchUI(branchsList: [BranchModel]) {
