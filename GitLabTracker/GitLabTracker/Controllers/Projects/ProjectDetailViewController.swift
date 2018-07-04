@@ -46,6 +46,7 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.tableViewOutlet.tableFooterView = UIView()
+        self.title = project?.name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

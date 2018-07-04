@@ -15,6 +15,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     var branchs: [BranchModel] = []
     var commits: [CommitModel] = []
     var issues: [IssueModel] = []
+    var mergeRequests : [MergeRequestModel] = []
+    var members: [MemberProject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,10 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             project?.getCommits(idProject: (project?.id)!, completed: self.updateCommitUI)
         case .issues:
             project?.getIssuesFromProject(idProject: (project?.id)!, completed: self.updateIssueUI)
+        case .mergeRequest:
+            project?.getMergeRequestsFromProject(idProject:  (project?.id)!, completed: self.updateMergeRequestUI)
+        case .members:
+            project?.getMembersFromProject(idProject:  (project?.id)!, completed: self.updateMembersUI)
         default:
             break
         }
@@ -46,8 +52,28 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateMergeRequestUI(mergeRequestsList: [MergeRequestModel]) {
+        mergeRequests = mergeRequestsList
+        if (mergeRequests.count == 0) {
+            let alert = UIAlertController(title: "No Merge requests found", message: "You are up to date !", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction((UIAlertAction(title: "Ok", style: .default, handler:
+                { (action) -> Void in
+                    self.navigationController?.popViewController(animated: true)
+            })))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.tableView.reloadData()
+        }
+    }
+    
     func updateCommitUI(commitList: [CommitModel]) {
         commits = commitList
+        self.tableView.reloadData()
+    }
+    
+    func updateMembersUI(memberList: [MemberProject]) {
+        members = memberList
         self.tableView.reloadData()
     }
     
@@ -82,6 +108,10 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             return 1
         case .issues:
             return 1
+        case .mergeRequest:
+            return 1
+        case .members:
+            return 1
         default:
             return 0
         }
@@ -96,6 +126,10 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             return commits.count
         case .issues:
             return issues.count
+        case .mergeRequest:
+            return mergeRequests.count
+        case .members:
+            return members.count
         default:
             return 0
         }
@@ -122,12 +156,34 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         case .issues:
             cell.textLabel?.text = issues[indexPath.row].title
             cell.detailTextLabel?.text = issues[indexPath.row].description
+        case .mergeRequest:
+            cell.textLabel?.text = mergeRequests[indexPath.row].title
+            cell.detailTextLabel?.text = mergeRequests[indexPath.row].description
+        case .members:
+            cell.textLabel?.text = members[indexPath.row].username
+            cell.detailTextLabel?.text = members[indexPath.row].state
+            if (members[indexPath.row].state == "active") {
+                cell.detailTextLabel?.textColor = UIColor.green
+            } else {
+                cell.detailTextLabel?.textColor = UIColor.red
+            }
         default:
             break
         }
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if type! == .mergeRequest {
+            let webUrl = mergeRequests[indexPath.row].webUrl
+            UIApplication.shared.open(URL(string : webUrl!)!, options: [:], completionHandler: nil)
+        } else if type! == .members {
+            let webUrl = members[indexPath.row].webUrl
+            UIApplication.shared.open(URL(string : webUrl!)!, options: [:], completionHandler: nil)
+        }
     }
 
     /*

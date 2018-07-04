@@ -44,6 +44,18 @@ class PipelineModel {
     }
 }
 
+class MergeRequestModel {
+    open var title: String?
+    open var description: String?
+    open var webUrl: String?
+}
+
+class MemberProject {
+    open var username: String?
+    open var state: String?
+    open var webUrl: String?
+}
+
 class IssueModel {
     open var state: String?
     open var description: String?
@@ -377,6 +389,73 @@ class ProjectModel {
                             issue.description = description
                             issue.title = title
                             res.append(issue)
+                        }
+                    }
+                case .failure(_):
+                    print("error")
+                }
+                completed(res)
+            })
+    }
+    
+    
+    func getMergeRequestsFromProject(idProject: Int, completed: @escaping ([MergeRequestModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/merge_requests?state=opened"
+        let url = URL(string: urlString)
+        var res: [MergeRequestModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let title = newDict["title"] as? String else {continue}
+                            guard let description = newDict["description"] as? String else {continue}
+                            guard let webUrl = newDict["web_url"] as? String else {continue}
+                            let mergeRequest = MergeRequestModel()
+                            mergeRequest.description = description
+                            mergeRequest.title = title
+                            mergeRequest.webUrl = webUrl
+                            res.append(mergeRequest)
+                        }
+                    }
+                case .failure(_):
+                    print("error")
+                }
+                completed(res)
+            })
+    }
+    
+    func getMembersFromProject(idProject: Int, completed: @escaping ([MemberProject]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/members"
+        let url = URL(string: urlString)
+        var res: [MemberProject] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let username = newDict["username"] as? String else {continue}
+                            guard let state = newDict["state"] as? String else {continue}
+                            let url = "https://gitlab.com/\(username)"
+                            let member = MemberProject()
+                            member.username = username
+                            member.state = state
+                            member.webUrl = url
+                            res.append(member)
                         }
                     }
                 case .failure(_):
