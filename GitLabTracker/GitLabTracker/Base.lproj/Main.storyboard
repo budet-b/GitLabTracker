@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCi-dy-mp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106.40000000000001" y="132.26600985221674"/>
+            <point key="canvasLocation" x="1022" y="132"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="DKk-p5-LFN">
@@ -258,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="4552.8000000000002" y="-542.36453201970448"/>
         </scene>
-        <!--Didier-->
+        <!--Detail-->
         <scene sceneID="2nb-m8-u2k">
             <objects>
-                <viewController title="Didier" id="ksF-iR-dSm" customClass="ProjectDetailViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ksF-iR-dSm" customClass="ProjectDetailViewController" customModule="GitLabTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bXu-z4-H4Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
