@@ -29,7 +29,10 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var project: ProjectModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = "Grodrigue"
+        self.navigationController?.title = "Didier"
+        self.navigationController?.navigationItem.title = "didié"
         // Do any additional setup after loading the view.
     }
 

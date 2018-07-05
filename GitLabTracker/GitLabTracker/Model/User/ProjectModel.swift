@@ -50,6 +50,14 @@ class MergeRequestModel {
     open var webUrl: String?
 }
 
+class EventModel {
+    open var actionName: String?
+    open var authorName: String?
+    open var commit_title: String?
+    open var actionDate: String?
+    open var message: String?
+}
+
 class MemberProject {
     open var username: String?
     open var state: String?
@@ -456,6 +464,51 @@ class ProjectModel {
                             member.state = state
                             member.webUrl = url
                             res.append(member)
+                        }
+                    }
+                case .failure(_):
+                    print("error")
+                }
+                completed(res)
+            })
+    }
+    
+    func getEventsFromProject(idProject: Int, completed: @escaping ([EventModel]) -> ()) {
+        let urlString = "https://gitlab.com/api/v4/projects/\(idProject)/events"
+        let url = URL(string: urlString)
+        var res: [EventModel] = []
+        Alamofire.request(url!, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON(completionHandler: {
+                response in
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    let result = response.result
+                    if let dict = result.value as? [[String: Any]] {
+                        print("success")
+                        for index in 0..<dict.count {
+                            let newDict = dict[index]
+                            guard let actionName = newDict["action_name"] as? String else {continue}
+                            guard let createdAt = newDict["created_at"] as? String else {continue}
+                            guard let authorUsername = newDict["author_username"] as? String else {continue}
+                            let event = EventModel()
+                            event.actionDate = createdAt
+                            if (actionName == "opened" || actionName == "accepted") { // MR, ISSUE
+                                let target_type = newDict["target_type"] as? String
+                                let target_title = newDict["target_title"] as? String
+                                let msg = "\(authorUsername) \(actionName) a new \(target_type!): \(target_title!)"
+                                event.message = msg
+                            } else {
+                                guard let pushDict = newDict["push_data"] as? [String: Any] else {break}
+                                let branch = pushDict["ref"] as? String ?? ""
+                                let commit_title = pushDict["commit_title"] as? String ?? ""
+                                event.actionName = actionName
+                                event.authorName = authorUsername
+                                let msg = "\(authorUsername) \(actionName) \(branch) : \(commit_title)"
+                                event.message = msg
+                            }
+                            res.append(event)
                         }
                     }
                 case .failure(_):

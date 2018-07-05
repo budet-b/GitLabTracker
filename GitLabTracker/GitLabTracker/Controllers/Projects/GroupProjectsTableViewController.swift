@@ -113,6 +113,7 @@ class GroupProjectsTableViewController: UITableViewController {
         if segue.identifier == "projectSegue" {
             if let indexPath = sender as? IndexPath {
                 let barViewControllers = segue.destination as! UITabBarController
+                barViewControllers.title = projects[indexPath.row].name
                 barViewControllers.viewControllers?.forEach {
                     if let vc = $0 as? ProjectDetailViewController {
                         vc.project = projects[indexPath.row]

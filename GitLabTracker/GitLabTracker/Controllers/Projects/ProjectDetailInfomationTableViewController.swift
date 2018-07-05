@@ -17,6 +17,7 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     var issues: [IssueModel] = []
     var mergeRequests : [MergeRequestModel] = []
     var members: [MemberProject] = []
+    var events: [EventModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             project?.getMergeRequestsFromProject(idProject:  (project?.id)!, completed: self.updateMergeRequestUI)
         case .members:
             project?.getMembersFromProject(idProject:  (project?.id)!, completed: self.updateMembersUI)
+        case .event:
+            project?.getEventsFromProject(idProject: (project?.id)!, completed: self.updateEvent)
         default:
             break
         }
@@ -67,6 +70,11 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         }
     }
     
+    func updateEvent(eventList: [EventModel]) {
+        events = eventList
+        self.tableView.reloadData()
+    }
+    
     func updateCommitUI(commitList: [CommitModel]) {
         commits = commitList
         self.tableView.reloadData()
@@ -101,20 +109,7 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        switch type! {
-        case .branch :
-            return 1
-        case .commit:
-            return 1
-        case .issues:
-            return 1
-        case .mergeRequest:
-            return 1
-        case .members:
-            return 1
-        default:
-            return 0
-        }
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,6 +125,8 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             return mergeRequests.count
         case .members:
             return members.count
+        case .event:
+            return events.count
         default:
             return 0
         }
@@ -167,6 +164,10 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             } else {
                 cell.detailTextLabel?.textColor = UIColor.red
             }
+        case .event:
+            cell.textLabel?.text = events[indexPath.row].message
+            let res = Date.convertDateFormat(from: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", to: "MMMM dd yyyy HH:mm", dateString: events[indexPath.row].actionDate)
+            cell.detailTextLabel?.text = res
         default:
             break
         }
