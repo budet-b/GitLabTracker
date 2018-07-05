@@ -18,9 +18,14 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
     var mergeRequests : [MergeRequestModel] = []
     var members: [MemberProject] = []
     var events: [EventModel] = []
-    
+    let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
         switch type! {
         case .branch:
             project?.getBranchs(idProject: (project?.id)!, completed: self.updateBranchUI)
@@ -34,8 +39,6 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
             project?.getMembersFromProject(idProject:  (project?.id)!, completed: self.updateMembersUI)
         case .event:
             project?.getEventsFromProject(idProject: (project?.id)!, completed: self.updateEvent)
-        default:
-            break
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -68,21 +71,30 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         } else {
             self.tableView.reloadData()
         }
+        self.endLoading()
+    }
+    
+    func endLoading() {
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     func updateEvent(eventList: [EventModel]) {
         events = eventList
         self.tableView.reloadData()
+        self.endLoading()
     }
     
     func updateCommitUI(commitList: [CommitModel]) {
         commits = commitList
         self.tableView.reloadData()
+        self.endLoading()
     }
     
     func updateMembersUI(memberList: [MemberProject]) {
         members = memberList
         self.tableView.reloadData()
+        self.endLoading()
     }
     
     func updateIssueUI(issueList: [IssueModel]) {
@@ -98,11 +110,13 @@ class ProjectDetailInfomationTableViewController: UITableViewController {
         } else {
             self.tableView.reloadData()
         }
+        self.endLoading()
     }
     
     func updateBranchUI(branchsList: [BranchModel]) {
         branchs = branchsList
         self.tableView.reloadData()
+        self.endLoading()
     }
 
     // MARK: - Table view data source

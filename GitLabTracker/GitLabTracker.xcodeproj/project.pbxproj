@@ -26,6 +26,8 @@
 		CB7DFC2220E645CE00743267 /* PersonnalProjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */; };
 		CB7DFC2320E645CE00743267 /* PersonnalProjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */; };
 		CB7DFC2520E6482B00743267 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFC2420E6482B00743267 /* ProjectModel.swift */; };
+		CBA59B2020EE403F0045EC75 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA59B1F20EE403F0045EC75 /* ProfilViewController.swift */; };
+		CBBEAF1A20EEA0D700127C71 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEAF1920EEA0D700127C71 /* EventTableViewCell.swift */; };
 		E8E7562B990E49A4635A4C21 /* Pods_GitLabTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		CB7DFC2020E645CE00743267 /* PersonnalProjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonnalProjectCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonnalProjectCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB7DFC2420E6482B00743267 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		CBA59B1F20EE403F0045EC75 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
+		CBBEAF1920EEA0D700127C71 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		D1F01C0EF85D6DD1532E6FA9 /* Pods_GitLabTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitLabTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CB7DFC1C20E5A53D00743267 /* DashboardViewController.swift */,
+				CBA59B1F20EE403F0045EC75 /* ProfilViewController.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				CB7DFC2120E645CE00743267 /* PersonnalProjectCollectionViewCell.xib */,
 				CB1AD9B320E6815E00CC2234 /* GroupProjectCollectionViewCell.swift */,
 				CB1AD9B820E6DB0300CC2234 /* GroupProjectTableViewCell.swift */,
+				CBBEAF1920EEA0D700127C71 /* EventTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA59B2020EE403F0045EC75 /* ProfilViewController.swift in Sources */,
 				CB7DFC1420E5917A00743267 /* LoginViewController.swift in Sources */,
 				CB1AD9B220E6804900CC2234 /* GroupModel.swift in Sources */,
 				CB7DFC0120E5829400743267 /* ViewController.swift in Sources */,
@@ -326,6 +333,7 @@
 				CB1AD9B720E6D36F00CC2234 /* GroupProjectsTableViewController.swift in Sources */,
 				CB1AD9BB20E6E17100CC2234 /* ProjectDetailViewController.swift in Sources */,
 				CB1AD9C120E85DCF00CC2234 /* PipelineDetailViewController.swift in Sources */,
+				CBBEAF1A20EEA0D700127C71 /* EventTableViewCell.swift in Sources */,
 				CB1AD9BD20E7B0D300CC2234 /* ProjectDetailInfomationTableViewController.swift in Sources */,
 				CB7DFC1A20E5922200743267 /* UserModel.swift in Sources */,
 				CB7DFBFF20E5829400743267 /* AppDelegate.swift in Sources */,

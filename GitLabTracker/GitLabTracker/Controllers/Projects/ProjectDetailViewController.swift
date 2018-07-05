@@ -25,14 +25,15 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var defaultBranchLabel: UILabel!
     @IBOutlet weak var gitUrlLabel: UILabel!
     @IBOutlet weak var tableViewOutlet: UITableView!
-    
+    let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     var project: ProjectModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "Grodrigue"
-        self.navigationController?.title = "Didier"
-        self.navigationController?.navigationItem.title = "didié"
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
         // Do any additional setup after loading the view.
     }
 
@@ -50,6 +51,8 @@ class ProjectDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.tableViewOutlet.tableFooterView = UIView()
         self.title = project?.name
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

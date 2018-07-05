@@ -9,10 +9,17 @@
 import UIKit
 
 class GroupProjectsTableViewController: UITableViewController {
+    
     var group: GroupeModel?
     var projects: [ProjectModel] = []
+    let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
         let proj = ProjectModel()
         if group != nil {
             proj.getProjectFromGroup(idGroup: (group?.id)!, completed: self.updateUI)
@@ -33,6 +40,8 @@ class GroupProjectsTableViewController: UITableViewController {
     func updateUI(projectsList: [ProjectModel]) {
         projects = projectsList
         self.tableView.reloadData()
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     override func didReceiveMemoryWarning() {

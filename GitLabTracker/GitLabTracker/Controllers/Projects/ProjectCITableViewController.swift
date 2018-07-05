@@ -12,9 +12,14 @@ class ProjectCITableViewController: UITableViewController {
 
     var project: ProjectModel?
     var ci: [CIModel] = []
-    
+    let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
         project?.getCI(idProject: (project?.id)!, completed: self.updateUI)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,6 +45,9 @@ class ProjectCITableViewController: UITableViewController {
             self.present(alert, animated: true, completion: nil)
         }
         self.tableView.reloadData()
+        
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     override func didReceiveMemoryWarning() {

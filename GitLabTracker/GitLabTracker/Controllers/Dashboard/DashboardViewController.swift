@@ -37,8 +37,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         userModel.downloadData(completed: self.updateUI)
         groupModel.downloadData(completed: self.updateGroup)
         
-        myActivityIndicator.stopAnimating()
-        myActivityIndicator.removeFromSuperview()
+
         // Do any additional setup after loading the view.
     }
     
@@ -64,7 +63,8 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
         print("success")
         self.projects = projectsList
         self.personnalProjectCollectionView.reloadData()
-
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

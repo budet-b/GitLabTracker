@@ -26,11 +26,16 @@ class PipelineDetailViewController: UIViewController {
     @IBOutlet weak var triggeredByLabel: UILabel!
     
     @IBOutlet weak var triggeredByAvatar: UIImageView!
-    
+    let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myActivityIndicator.center = view.center
+        myActivityIndicator.hidesWhenStopped = false
+        myActivityIndicator.startAnimating()
+        view.addSubview(myActivityIndicator)
         project?.getSingleCI(idProject: (project?.id)!, idPipeline: (pipeline?.id)!, completed: self.updateUI)
         // Do any additional setup after loading the view.
     }
@@ -68,6 +73,8 @@ class PipelineDetailViewController: UIViewController {
             let finalString = "\(minutes) : \(seconds)"
             durationLabel.text = finalString
         }
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.removeFromSuperview()
     }
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
