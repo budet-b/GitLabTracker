@@ -111,6 +111,7 @@ class ProjectModel {
     open var nameWithNamespace: String?
     open var isPrivate: Bool?
     open var projectDescription: String?
+    open var image: UIImage?
     open var sshURL: URL?
     open var cloneURL: URL?
     open var webURL: URL?
@@ -176,6 +177,9 @@ class ProjectModel {
                                 let url = URL(string: "http://via.placeholder.com/75x75.png")
                                 tmp.avatarURL = url
                             }
+                            let data = try? Data.init(contentsOf: tmp.avatarURL!)
+                            tmp.image = UIImage(data: data!)
+
                             res.append(tmp)
                         }
                     }
@@ -217,6 +221,9 @@ class ProjectModel {
                                 let url = URL(string: "http://via.placeholder.com/75x75.png")
                                 tmp.avatarURL = url
                             }
+
+                            let data = try? Data.init(contentsOf: tmp.avatarURL!)
+                            tmp.image = UIImage(data: data!)
                             res.append(tmp)
                         }
                     }

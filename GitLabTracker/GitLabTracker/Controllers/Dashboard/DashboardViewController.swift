@@ -89,6 +89,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             } else {
                 cell.projectImage.image = UIImage(named: "placeholder")
             }
+            cell.projectImage.image = projects[indexPath.row].image
             cell.projectName.text = projects[indexPath.row].name
             return cell
         case groupsCollectionView:
@@ -101,6 +102,7 @@ class DashboardViewController: UIViewController, UICollectionViewDelegate, UICol
             } else {
                 cell.groupProjectImage.image = UIImage(named: "placeholder")
             }
+            cell.groupProjectImage.image = groups[indexPath.row].image
             return cell
         default:
             let cell = UICollectionViewCell()

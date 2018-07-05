@@ -24,6 +24,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func pasteButtonAction(_ sender: Any) {
+        if let pasteboard = UIPasteboard.general.string {
+            personnaltokenTextField.text = pasteboard
+        }
+    }
     
     @IBAction func loginActionPressed(_ sender: Any) {
         if (personnaltokenTextField.text?.isEmpty)! {

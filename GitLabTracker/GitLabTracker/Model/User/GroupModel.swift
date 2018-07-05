@@ -14,6 +14,7 @@ class GroupeModel {
     open var id: Int?
     open var name: String?
     open var avatarURL: URL?
+    open var image: UIImage?
 
     let headers: HTTPHeaders = [
         "Private-Token": UserDefaults.standard.value(forKey: "token") as! String,
@@ -43,6 +44,9 @@ class GroupeModel {
                                 let url = URL(string: "http://via.placeholder.com/75x75.png")
                                 tmp.avatarURL = url
                             }
+                            let data = try? Data.init(contentsOf: tmp.avatarURL!)
+                            tmp.image = UIImage(data: data!)
+
                             tmp.id = newDict["id"] as? Int
                             res.append(tmp)
                         }

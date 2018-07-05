@@ -42,6 +42,14 @@
                                     <action selector="loginActionPressed:" destination="IA4-TG-zAW" eventType="touchUpInside" id="DpT-oO-LVD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uin-F7-vdi">
+                                <rect key="frame" x="149" y="120" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Paste"/>
+                                <connections>
+                                    <action selector="pasteButtonAction:" destination="IA4-TG-zAW" eventType="touchUpInside" id="kQX-km-37J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -64,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCi-dy-mp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106.40000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-106.40000000000001" y="132.26600985221674"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="DKk-p5-LFN">
